@@ -1,104 +1,211 @@
-body {
-  font-family: 'Arial', sans-serif;
+/* Reset some default styles */
+html, body, h1, h2, h3, p, ul, li {
   margin: 0;
   padding: 0;
 }
 
-header {
-  background-color: #4CAF50;
-  padding: 20px;
-  text-align: center;
-  color: white;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-section {
+header {
+  background-color: #3498db;
+  color: #fff;
   padding: 20px;
+  text-align: center;
+}
+
+#login-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+#app-container {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 input {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
 button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  width: 100%; /* Full width on small screens */
-  box-sizing: border-box;
-  margin-bottom: 10px; /* Add margin for better spacing on smaller screens */
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #2980b9;
 }
 
-.read-button,
-.toggle-buton {
+.read-button, .toggle-buton {
   display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.read-meter,
-.meter {
+.read-meter, .meter {
   flex: 1;
   margin-right: 10px;
-  margin-bottom: 10px; /* Add margin for better spacing on smaller screens */
 }
+
+/* ... (previous styles) */
 
 #data-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  overflow-x: auto; /* Add horizontal scrollbar if needed */
+  margin-left: 0; /* Remove unnecessary margin */
 }
 
-#table-headers th,
-#data-table td {
+/* ... (remaining styles) */
+
+
+#data-table th, #data-table td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
 }
 
-#table-headers th {
-  position: sticky;
-  top: 0;
-  background-color: #f2f2f2;
-  color: black;
-}
-
 #data-table th {
-  position: sticky;
-  top: 0;
-  background-color: #f2f2f2;
-  color: black;
+  background-color: #3498db;
+  color: #fff;
 }
 
-/* Responsive Design */
-@media only screen and (max-width: 768px) {
-  input,
-  button {
-    width: 100%;
+#data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#data-table tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  #login-container, #app-container {
+      max-width: 100%;
   }
 
-  .read-meter,
-  .meter {
+  .read-button, .toggle-buton {
+      flex-direction: column;
+  }
+
+  .read-meter, .meter {
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+}
+/* ... (previous styles) */
+
+.read-button, .toggle-button { /* Fixed typo here */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.read-meter, .meter {
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* ... (remaining styles) */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  #login-container, #app-container {
+      max-width: 100%;
+  }
+
+  .read-button, .toggle-button { /* Fixed typo here */
+      flex-direction: column;
+  }
+
+  .read-meter, .meter {
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+}
+/* ... (previous styles) */
+
+.read-button, .toggle-button { /* Fixed typo here */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.read-meter, .meter {
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* ... (remaining styles) */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  #login-container, #app-container {
+      max-width: 100%;
+  }
+
+  .read-button, .toggle-button { /* Fixed typo here */
+      flex-direction: column;
+  }
+
+  .read-meter, .meter {
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+}
+/* ... (previous styles) */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  #login-container, #app-container {
+    max-width: 100%;
+  }
+
+  .read-button, .toggle-button {
+    flex-direction: column;
+  }
+
+  .read-meter, .meter {
     margin-right: 0;
     margin-bottom: 10px;
+    width: 100%; /* Make buttons full width on small screens */
   }
 
-  #table-headers th,
-  #data-table td {
-    padding: 8px;
+  button {
+    width: 100%; /* Make buttons full width on small screens */
+    margin-bottom: 8px; /* Add some spacing between buttons */
+  }
+
+  #data-table {
+    overflow-x: auto; /* Add horizontal scroll for the table on small screens */
+  }
+
+  #data-table th, #data-table td {
+    white-space: nowrap; /* Prevent text wrapping in table cells */
   }
 }

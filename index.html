@@ -20,6 +20,15 @@
         <button onclick="import('./script.js').then(script => script.authenticate())">Login</button>
     </section>
     <section id="app-container" style="display: none;">
+
+        <table id="data-table">
+            <thead>
+                <tr id="table-headers">
+                    <!-- Headers will be dynamically added by JavaScript -->
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
         <div>
             <div class="read-button">
                 <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m1'))">Read Meter 1</button>
@@ -34,15 +43,7 @@
                 <button class="meter" onclick="import('./script.js').then(script => script.handleButtonClick('w4'))">Meter 4</button>
             </div>
         </div>
-
-        <table id="data-table">
-            <thead>
-                <tr id="table-headers">
-                    <!-- Headers will be dynamically added by JavaScript -->
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+    </section>
     <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js"></script>
     <script type="module" src="script.js"></script>

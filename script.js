@@ -105,9 +105,26 @@ function populateTable() {
 // ... (Remaining code)
 
 // Initial data fetch
+// script.js
+
+// ... (Your existing code)
+
 const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
 const loginContainer = document.getElementById('login-container');
 const appContainer = document.getElementById('app-container');
+
+// Check if the user is already authenticated on window load
+window.onload = function () {
+    const savedUsername = localStorage.getItem('username');
+    const savedPassword = localStorage.getItem('password');
+    if (savedUsername) {
+        // Auto-authenticate with saved username
+        usernameInput.value = savedUsername;
+        passwordInput.value = savedPassword;
+        authenticate();
+    }
+};
 
 export function authenticate() {
     const passwordInput = document.getElementById('password');
@@ -120,7 +137,11 @@ export function authenticate() {
         const correctPassword = snapshot.val();
 
         if (enteredPassword === correctPassword) {
-            // Correct password, show the app
+            // Correct password, save username in local storage
+            localStorage.setItem('username', enteredUsername);
+            localStorage.setItem('password', enteredPassword);
+
+            // Hide login container and show app container
             loginContainer.style.display = 'none';
             appContainer.style.display = 'block';
             fetchData(enteredUsername); // Fetch data when authenticated
@@ -130,8 +151,20 @@ export function authenticate() {
         }
     });
 }
+
+// ... (Your existing code)
+
 export function handlePasswordKeyPress(event) {
     if (event.key === 'Enter') {
         authenticate();
     }
+}
+
+export function logout(){
+     // Clear username and password from local storage
+     localStorage.removeItem('username');
+     localStorage.removeItem('password');
+ 
+     // Redirect to the login page (index.html)
+     window.location.href = 'index.html';
 }

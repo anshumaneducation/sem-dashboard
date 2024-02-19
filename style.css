@@ -72,7 +72,6 @@ button:hover {
   margin-right: 10px;
 }
 
-/* ... (previous styles) */
 
 #data-table {
   width: 100%;
@@ -80,9 +79,6 @@ button:hover {
   margin-top: 20px;
   margin-left: 0; /* Remove unnecessary margin */
 }
-
-/* ... (remaining styles) */
-
 
 #data-table th, #data-table td {
   border: 1px solid #ddd;
@@ -118,7 +114,6 @@ button:hover {
       margin-bottom: 10px;
   }
 }
-/* ... (previous styles) */
 
 .read-button, .toggle-button { /* Fixed typo here */
   display: flex;
@@ -130,8 +125,6 @@ button:hover {
   flex: 1;
   margin-right: 10px;
 }
-
-/* ... (remaining styles) */
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -148,7 +141,6 @@ button:hover {
       margin-bottom: 10px;
   }
 }
-/* ... (previous styles) */
 
 .read-button, .toggle-button { /* Fixed typo here */
   display: flex;
@@ -160,8 +152,6 @@ button:hover {
   flex: 1;
   margin-right: 10px;
 }
-
-/* ... (remaining styles) */
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -178,7 +168,6 @@ button:hover {
       margin-bottom: 10px;
   }
 }
-/* ... (previous styles) */
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -209,3 +198,18 @@ button:hover {
     white-space: nowrap; /* Prevent text wrapping in table cells */
   }
 }
+
+/* Add this rule to apply red color to the logout button */
+#logout_button {
+  background-color: #e74c3c; /* Red color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#logout_button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+

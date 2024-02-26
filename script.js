@@ -129,9 +129,6 @@ const firebaseConfig = {
       const passwordRef = ref(database, `/${enteredUsername}/sem_password`);
       onValue(passwordRef, (snapshot) => {
           const correctPassword = snapshot.val();
-          console.log('Snapshot:', snapshot.val());
-          console.log('Correct Password from Firebase:', correctPassword);
-          console.log(`${enteredUsername}`)
   
           if (enteredPassword === correctPassword) {
               // Correct password, save username in local storage

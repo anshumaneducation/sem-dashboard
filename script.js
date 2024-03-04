@@ -14,8 +14,70 @@ const firebaseConfig = {
 
   const firebaseApp = initializeApp(firebaseConfig);
   const database = getDatabase(firebaseApp);
+
+
+  function messageToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'custom-toast';
+
+    const messageParagraph = document.createElement('p');
+    messageParagraph.textContent = message;
+
+    toast.appendChild(messageParagraph);
+
+    document.body.appendChild(toast);
+
+    // Display the toast for a few seconds
+    setTimeout(() => {
+        document.body.removeChild(toast);
+    }, 2000);
+}
+
+
   
   export function handleButtonClick(buttonText) {
+    let message;
+    // Your existing logic for button click
+    switch (buttonText) {
+        case 'm1':
+            message = 'Meter 1 button pressed!';
+            // Add additional logic if needed
+            break;
+        case 'm2':
+            message = 'Meter 2 button pressed!';
+            // Add additional logic if needed
+            break;
+        case 'm3':
+            message = 'Meter 3 button pressed!';
+            // Add additional logic if needed
+            break;
+        case 'm4':
+            message = 'Meter 4 button pressed!';
+            // Add additional logic if needed
+            break;
+        case 'w1':
+            message = 'Toggle switch 1 pressed!';
+            // Add additional logic if needed
+            break;
+        case 'w2':
+            message = 'Toggle switch 2 pressed!';
+            // Add additional logic if needed
+            break;
+        case 'w3':
+            message = 'Toggle switch 3 pressed!';
+            // Add additional logic if needed
+            break;
+        case 'w4':
+            message = 'Toggle switch 4 pressed!';
+            // Add additional logic if needed
+            break;
+        default:
+            message = 'Unknown button pressed!';
+            break;
+    }
+
+//    messageToast(message)
+
       const username = document.getElementById('username').value; // Get username from input field
       const path = `/${username}/writeCommand`; // Change this path accordingly
       const data = buttonText;
@@ -47,12 +109,27 @@ const firebaseConfig = {
               dataMap.set(meter, data);
               populateTable();
           });
+
+          // Fetch meter_toggle array
+        const toggleRef = ref(database, `/${username}/toggle_meter`);
+        onValue(toggleRef, (snapshot) => {
+            const toggleData = snapshot.val();
+            handleToggleData(toggleData);
+        });
       });
   }
   
-  // ... (Previous code)
-  
-  // Update the populateTable() function in script.js
+  function handleToggleData(toggleData) {
+    const switches = ['switch1', 'switch2', 'switch3', 'switch4'];
+
+    toggleData.forEach((value, index) => {
+        const switchId = switches[index];
+        const switchElement = document.getElementById(switchId);
+
+        // Set the switch state based on the value in toggleData
+        switchElement.checked = (value === 1);
+    });
+}
   
   function populateTable() {
       const tbody = dataTable.querySelector('tbody');
@@ -129,6 +206,9 @@ const firebaseConfig = {
       const passwordRef = ref(database, `/${enteredUsername}/sem_password`);
       onValue(passwordRef, (snapshot) => {
           const correctPassword = snapshot.val();
+          console.log('Snapshot:', snapshot.val());
+          console.log('Correct Password from Firebase:', correctPassword);
+          console.log(`${enteredUsername}`)
   
           if (enteredPassword === correctPassword) {
               // Correct password, save username in local storage

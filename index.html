@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Observers Dashboard</title>
+    <title>SCADA Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
     <header class="header">
-        <h1>Observers Dashboard<button id="logout_button" onclick="import('./script.js').then(script => script.logout())">Logout</button></h1>  
+        <h1>SCADA Dashboard<button id="logout_button" onclick="import('./script.js').then(script => script.logout())">Logout</button></h1>  
     </header>
     <section id="login-container">
         <label class="label-login" for="username">Enter Username:</label>
@@ -31,10 +31,10 @@
         </table>
         <div>
             <div class="read-button">
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m1'))">Meter1</button>
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m2'))">Meter2</button>
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m3'))">Meter3</button>
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m4'))">Meter4</button>
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m1'))">Meter 1</button>
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m2'))">Meter 2</button>
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m3'))">Meter 3</button>
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m4'))">Meter 4</button>
             </div>
             <div class="toggle-button">
                 <input type="checkbox" id="switch1" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w1'))" />

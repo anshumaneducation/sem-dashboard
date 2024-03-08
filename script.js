@@ -33,8 +33,6 @@ const firebaseConfig = {
     }, 2000);
 }
 
-
-  
   export function handleButtonClick(buttonText) {
     let message;
     // Your existing logic for button click
@@ -76,7 +74,6 @@ const firebaseConfig = {
             break;
     }
 
-//    messageToast(message)
 
       const username = document.getElementById('username').value; // Get username from input field
       const path = `/${username}/writeCommand`; // Change this path accordingly
@@ -88,7 +85,6 @@ const firebaseConfig = {
       }, 2000);
   }
   
-  // Function to write data to Firebase
   function writeToFirebase(path, data) {
       const dataRef = ref(database, path);
       return set(dataRef, data);
@@ -125,7 +121,6 @@ const firebaseConfig = {
     toggleData.forEach((value, index) => {
         const switchId = switches[index];
         const switchElement = document.getElementById(switchId);
-
         // Set the switch state based on the value in toggleData
         switchElement.checked = (value === 1);
     });
@@ -150,7 +145,7 @@ const firebaseConfig = {
   
       // Add "Device" header as the first column
       const deviceHeader = document.createElement('th');
-      deviceHeader.textContent = 'Device';
+      deviceHeader.textContent = 'SEM';
       headersRow.appendChild(deviceHeader);
   
       // Add other headers

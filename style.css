@@ -5,18 +5,6 @@ html, body, h1, h2, h3, p, ul, li {
   padding: 0;
   box-sizing: border-box;
 }
-.custom-toast {
-  position: fixed;
-  bottom: 10px;
-  left: 20px;
-  color: rgb(25, 24, 24); /* White text */
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(22, 20, 20, 0.1); /* Subtle box shadow */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
-  overflow: hidden;
-  animation: lightning 0.2s ease infinite;
-}
 
 @keyframes lightning {
   0% {
@@ -30,14 +18,6 @@ html, body, h1, h2, h3, p, ul, li {
   }
 }
 
-@media (max-width: 768px) {
-  .custom-toast {
-      bottom: 80%;
-      left: 10%;
-      transform: translateX(-50%);
-  }
-}
-
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
@@ -48,23 +28,10 @@ body {
 header {
   background-color: #3498db;
   color: #fff;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
 }
 
-#logout_button {
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 90%;
-}
-
-#logout_button:hover {
-  background-color: #c0392b;
-}
 
 #login-container {
   max-width: 400px;
@@ -151,23 +118,26 @@ button:hover {
   margin-right: 10px;
 }
 
-
 #data-table {
-  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  margin-left: 0; /* Remove unnecessary margin */
+  margin-left: 0;
+  margin-bottom: 20px;
 }
 
-#data-table th, #data-table td {
+ #data-table td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
+  white-space: nowrap;
 }
-
 #data-table th {
+  border: 1px solid #ddd;
+  padding: 10px 4px;
+  text-align: left;
   background-color: #3498db;
   color: #fff;
+  white-space: nowrap;
 }
 
 #data-table tbody tr:nth-child(even) {
@@ -178,20 +148,17 @@ button:hover {
   background-color: #e0e0e0;
 }
 
-.read-button { /* Fixed typo here */
+.read-button { 
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.read-meter, .meter {
-  flex: 1;
-  margin-right: 10px;
-}
-.read-button, .toggle-button { /* Fixed typo here */
+.read-button, .toggle-button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+
 }
 
 .read-meter, .meter {
@@ -213,12 +180,30 @@ button:hover {
 #logout_button:hover {
   background-color: #c0392b; /* Darker red on hover */
 }
+#userIdInHTML {
+  font-weight: bold;
+  color: #333; /* Text color */
+  margin-right: 10px; /* Add spacing between the span and button */
+}
+
+#logout_button {
+  background-color: #e74c3c; /* Red color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#logout_button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
 
 .toggle {
   position : relative ;
   display : inline-block;
-  width : 100px;
-  height : 46px;
+  width : 85px;
+  height : 30px;
   background-color: red;
   border-radius: 30px;
   border: 2px solid gray;
@@ -228,8 +213,8 @@ button:hover {
 .toggle:after {
   content: '';
   position: absolute;
-  width: 45px;
-  height: 45px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background-color: gray;
   top: 1px; 
@@ -238,7 +223,7 @@ button:hover {
 }
      
 /* Toggle text */
-p {margin-top: 12px;
+p {margin-top: 8px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
@@ -257,37 +242,139 @@ p {margin-top: 12px;
 .checkbox { 
   display : none;
 }
+#toggle1btn{
+  margin-left: 2px;
+}
 
-/* Responsive Styles */
-@media (max-width: 768px) {
+#toggle2btn,#toggle3btn,#toggle4btn{
+  margin-left: 17px;
+}
 
-  #login-container, #app-container {
-    max-width: 100%;
-  }
 
-  .read-button, .toggle-button {
-    flex-direction: row;
-  }
+.universal-reading{
+  display: flex;
+}
+.universal-toggle{
+  display: flex;
+}
+.container-margin-all{
+  margin-right: 50px;
+}
+#userIdInHTML {
+  font-weight: bold;
+  color: #333; /* Text color */
+}
 
-  .read-meter, .meter {
-    margin-right: 0;
-    margin-bottom: 10px;
-    width: 100%; 
-  }
+#logout_button {
+  background-color: #e74c3c; /* Red color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  button {
-    width: 100%; /* Make buttons full width on small screens */
-    margin-bottom: 8px; /* Add some spacing between buttons */
-  }
+#logout_button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
 
-  #data-table {
-    overflow-x: auto; /* Add horizontal scroll for the table on small screens */
-  }
+#userIdInHTML {
+  font-weight: bold;
+  color: #333; /* Text color */
+}
 
-  #data-table th, #data-table td {
-    white-space: nowrap; /* Prevent text wrapping in table cells */
-  }
-  #logout_button {
-    margin-left: 0%;
-  }
+#logout_button {
+  background-color: #e74c3c; /* Red color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#logout_button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Flex container for aligning elements */
+#container {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+}
+
+
+
+
+
+
+.meter_data_container {
+  
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+}
+
+
+.meter_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.meter {
+  margin-right: 75px;
+  border: 1px solid #db3434;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.meter:last-child {
+  margin-right: 0;
+}
+
+
+.container-top {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  padding: 10px; /* Add some padding for spacing */
+}
+
+#profileSymbol {
+  font-size: 24px; /* Adjust size of the symbol */
+  margin-right: 10px; /* Add some spacing between symbol and user ID */
+}
+
+#logout_button {
+  background-color: #c62c2c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logout_button:hover {
+  background-color: #3498db;
+}
+
+.meter {
+  display: inline-block;
+  position: relative;
+  margin-right: 24px; /* Adjust the spacing between meter elements */
+}
+
+.meter span {
+  display: inline-block;
+  /* background-color: black; 
+  color: white;  */
+  width: 60px; /* Set a fixed width */
+  height: 20px; /* Set a fixed height */
+  text-align: center; /* Center the text horizontally */
+  line-height: 30px; /* Center the text vertically */
+  border-radius: 5px; /* Add rounded corners */
 }

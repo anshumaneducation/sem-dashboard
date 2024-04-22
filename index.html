@@ -11,7 +11,7 @@
 
 <body>
     <header class="header">
-        <h1>SCADA Dashboard<button id="logout_button" onclick="import('./script.js').then(script => script.logout())">Logout</button></h1>  
+        <h1>SCADA Dashboard</h1>  
     </header>
     <section id="login-container">
         <label class="label-login" for="username">Enter Username:</label>
@@ -21,7 +21,11 @@
         <button onclick="import('./script.js').then(script => script.authenticate())">Login</button>
     </section>
     <section id="app-container" style="display: none;">
+        <div class="container-top">
+            <span id="profileSymbol">👤</span><span id="userIdInHTML">userId</span>
 
+            <button id="logout_button" onclick="import('./script.js').then(script => script.logout())">Logout</button>
+        </div>
         <table id="data-table">
             <thead>
                 <tr id="table-headers">
@@ -30,35 +34,89 @@
             <tbody></tbody>
         </table>
         <div>
+            <div class="universal-reading">
+                <div class="container-margin-all">
+                    <strong>Meter Reading</strong>
+                </div>
             <div class="read-button">
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m1'))">Meter 1</button>
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m2'))">Meter 2</button>
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m3'))">Meter 3</button>
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m4'))">Meter 4</button>
-            </div>
-            <div class="toggle-button">
-                <input type="checkbox" id="switch1" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w1'))" />
-                <label for="switch1" class="toggle" >
-                    <p>ON  &nbsp;&nbsp; &nbsp;&nbsp;OFF</p>
-                </label>
-            
-                <input type="checkbox" id="switch2" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w2'))"/>
-                <label for="switch2" class="toggle" >
-                    <p>ON  &nbsp;&nbsp; &nbsp;&nbsp;OFF</p>
-                </label>
-            
-                <input type="checkbox" id="switch3" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w3'))"/>
-                <label for="switch3" class="toggle" >
-                    <p>ON  &nbsp;&nbsp; &nbsp;&nbsp;OFF</p>
-                </label>
-            
-                <input type="checkbox" id="switch4" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w4'))"/>
-                <label for="switch4" class="toggle" >
-                    <p>ON  &nbsp;&nbsp; &nbsp;&nbsp;OFF</p>
-                </label>
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m1'))">DC-A:M1</button>
+                <div class="vertical-line-here-1"></div>
+
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m2'))">DC-A:M2</button>
+                <div class="vertical-line-here-2"></div>
+
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m3'))">DC-B:M1</button>
+                <div class="vertical-line-here-3"></div>
+
+                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m4'))">DC-B:M2</button>
             </div>
         </div>
+            <div class="universal-toggle">
+                <div class="container-margin-all">
+                    <strong>Disconnection</strong>
+                </div>
+
+            <div class="toggle-button">
+                <div id="toggle1btn">
+                <input type="checkbox" id="switch1" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w1'))" />
+                <label for="switch1" class="toggle" >
+                    <p>ON&nbsp; &nbsp;&nbsp;OFF</p>
+                </label></div>
+ 
+
+                <div id="toggle2btn">
+                <input type="checkbox" id="switch2" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w2'))"/>
+                <label for="switch2" class="toggle" >
+                    <p>ON &nbsp;&nbsp;&nbsp;OFF</p>
+                </label>
+            </div>
+
+
+                <div id="toggle3btn">
+                <input type="checkbox" id="switch3" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w3'))"/>
+                <label for="switch3" class="toggle" >
+                    <p>ON &nbsp;&nbsp;&nbsp;OFF</p>
+                </label>
+            </div>
+
+            
+                <div id="toggle4btn">
+                <input type="checkbox" id="switch4" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w4'))"/>
+                <label for="switch4" class="toggle" >
+                    <p>ON &nbsp;&nbsp;&nbsp;OFF</p>
+                </label>
+            </div>
+            </div>
+        </div>
+            <div class="meter_data_container">
+                <div class="container-margin-all">
+                    <strong>Balance(Wh)</strong>
+                </div>
+                <div class="meter_row">
+                    <div class="meter">
+                        <span id="balance-m1">0</span>  
+                    </div>
+          
+
+                    <div class="meter">
+                        <span id="balance-m2">0</span>
+                    </div>
+         
+                    <div class="meter">
+                        <span id="balance-m3">0</span>  
+                    </div>
+              
+                    
+                    <div class="meter">
+                        <span id="balance-m4">0</span>
+                    </div>
+                </div>
+            </div>
+
+
     </section>
+
+
     <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

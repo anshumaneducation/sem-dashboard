@@ -89,8 +89,27 @@ const firebaseConfig = {
       const dataRef = ref(database, path);
       return set(dataRef, data);
   }
-  
+
+  function handleBalanceData(balanceData) {
+    // Assuming balanceData is an array with 4 elements representing balances for each meter
+    const [balanceM1, balanceM2, balanceM3, balanceM4] = balanceData;
+
+    // Select the <span> elements using their IDs
+    const balanceM1Element = document.getElementById('balance-m1');
+    const balanceM2Element = document.getElementById('balance-m2');
+    const balanceM3Element = document.getElementById('balance-m3');
+    const balanceM4Element = document.getElementById('balance-m4');
+
+    // Set the textContent of each <span> element
+    balanceM1Element.textContent = balanceM1;
+    balanceM2Element.textContent = balanceM2;
+    balanceM3Element.textContent = balanceM3;
+    balanceM4Element.textContent = balanceM4;
+}
+
+
   // Fetch and display data
+
   const dataTable = document.getElementById('data-table');
   const dataMap = new Map();
   
@@ -112,9 +131,17 @@ const firebaseConfig = {
             const toggleData = snapshot.val();
             handleToggleData(toggleData);
         });
+          // Fetch balance array
+          const balanceRef = ref(database, `/${username}/balace_remain`);
+          onValue(balanceRef, (snapshot) => {
+              const Balance_data = snapshot.val();
+              handleBalanceData(Balance_data);
+              console.log(Balance_data)
+          });
       });
   }
-  
+
+
   function handleToggleData(toggleData) {
     const switches = ['switch1', 'switch2', 'switch3', 'switch4'];
 
@@ -140,12 +167,12 @@ const firebaseConfig = {
           .flat()
           .filter((value, index, self) => self.indexOf(value) === index);
   
-      const paras = ["volts 01", "volts 02", "volts 03", "current 01", "current 02", "current 03", "watt 01", "watt 02",
-          "watt 03", "VAR 01", "VAR 02", "VAR 03", "freq", "wh Import", "wh Export", "VL 1-2", "VL 2-3", "VL 3-1"];
+      const paras = ["Volts 01", "Volts 02", "Volts 03", "Current 01", "Current 02", "Current 03", "Watt 01", "Watt 02",
+          "Watt 03", "VAR 01", "VAR 02", "VAR 03", "Freq", "Wh Import", "Wh Export", "VL 1-2", "VL 2-3", "VL 3-1"];
   
       // Add "Device" header as the first column
       const deviceHeader = document.createElement('th');
-      deviceHeader.textContent = 'SEM';
+      deviceHeader.textContent = 'Meter';
       headersRow.appendChild(deviceHeader);
   
       // Add other headers
@@ -154,12 +181,26 @@ const firebaseConfig = {
           headerCell.textContent = paras[parameter];
           headersRow.appendChild(headerCell);
       }
-  
+
       // Add meter rows
       for (const meter of meters) {
           const row = document.createElement('tr');
           const meterCell = document.createElement('td');
-          meterCell.textContent = meter;
+
+          let text=""
+          if(meter=="Meter 1"){
+            text="DC-A:M1"
+          }
+          else if(meter=="Meter 2"){
+            text="DC-A:M2"
+          }
+          else if(meter=="Meter 3"){
+            text="DC-B:M1"
+          }
+          else if(meter=="Meter 4"){
+            text="DC-B:M2"
+          }
+          meterCell.textContent = text;
           row.appendChild(meterCell);
   
           for (const parameter of parameters) {
@@ -219,6 +260,14 @@ const firebaseConfig = {
               alert('Incorrect password. Please try again.');
           }
       });
+
+      handleUsernameInLogout(enteredUsername)
+  }
+ function handleUsernameInLogout(enteredUsername){
+    const elementUserId = document.getElementById('userIdInHTML');
+
+    // Set the textContent of each <span> element
+    elementUserId.textContent = enteredUsername;
   }
   
   // ... (Your existing code)

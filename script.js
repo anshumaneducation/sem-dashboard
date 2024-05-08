@@ -169,6 +169,8 @@ const firebaseConfig = {
   
       const paras = ["Volts 01", "Volts 02", "Volts 03", "Current 01", "Current 02", "Current 03", "Watt 01", "Watt 02",
           "Watt 03", "VAR 01", "VAR 02", "VAR 03", "Freq", "Wh Import", "Wh Export", "VL 1-2", "VL 2-3", "VL 3-1"];
+      const SIunits=["Volts","Volts","Volts","Amps","Amps","Amps","Watts","Watts","Watts","KVAr","KVAr",
+      "KVAr","Hz","Watt-hr","Watt-hr","Volts","Volts","Volts"]
   
       // Add "Device" header as the first column
       const deviceHeader = document.createElement('th');
@@ -182,7 +184,20 @@ const firebaseConfig = {
           headersRow.appendChild(headerCell);
       }
 
+      //add si units on the meters rows at top 
+      const siUnitsRow = document.createElement('tr');
+      const oneCell = document.createElement('td');
+      oneCell.textContent = "SI Units";
+      siUnitsRow.appendChild(oneCell);
+
+      for (let i = 0; i < SIunits.length; i++) {
+        const valuesCell = document.createElement('td');
+        valuesCell.textContent = Array.isArray(SIunits[i]) ? SIunits[i].join(', ') : SIunits[i];
+        siUnitsRow.appendChild(valuesCell);
+    }
+    tbody.appendChild(siUnitsRow);
       // Add meter rows
+      
       for (const meter of meters) {
           const row = document.createElement('tr');
           const meterCell = document.createElement('td');

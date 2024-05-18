@@ -31,7 +31,12 @@ header {
   padding: 10px;
   text-align: center;
 }
-
+.login_header{
+margin-bottom: 20px;
+}
+#login-button{
+  margin-left: 35%;
+}
 
 #login-container {
   max-width: 400px;

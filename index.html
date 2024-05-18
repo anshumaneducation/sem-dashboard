@@ -10,15 +10,18 @@
 </head>
 
 <body>
-    <header class="header">
+    <header id="header" style="display: none;">
         <h1>SCADA Dashboard</h1>  
     </header>
     <section id="login-container">
+        <header class="login_header" >
+            <h1>SCADA Dashboard Login</h1>  
+        </header>
         <label class="label-login" for="username">Enter Username:</label>
         <input class="label-input" type="text" id="username" />
         <label class="label-login" for="password">Enter Password:</label>
         <input class="label-input" type="password" id="password" onkeydown="import('./script.js').then(script => script.handlePasswordKeyPress(event))" />
-        <button onclick="import('./script.js').then(script => script.authenticate())">Login</button>
+        <button onclick="import('./script.js').then(script => script.authenticate())" id="login-button">Login</button>
     </section>
     <section id="app-container" style="display: none;">
         <div class="container-top">

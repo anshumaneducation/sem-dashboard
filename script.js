@@ -233,6 +233,7 @@ const firebaseConfig = {
   const usernameInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
   const loginContainer = document.getElementById('login-container');
+  const headerTextForIt = document.getElementById('header');
   const appContainer = document.getElementById('app-container');
   
   // Check if the user is already authenticated on window load
@@ -269,6 +270,7 @@ const firebaseConfig = {
               // Hide login container and show app container
               loginContainer.style.display = 'none';
               appContainer.style.display = 'block';
+              headerTextForIt.style.display='block'
               fetchData(enteredUsername); // Fetch data when authenticated
           } else {
               // Incorrect password, show an error

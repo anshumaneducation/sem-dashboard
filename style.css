@@ -312,6 +312,13 @@ p {margin-top: 8px;
 
 
 
+.Monitoring_starting {
+  
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+}
 .meter_data_container {
   
   border-radius: 5px;

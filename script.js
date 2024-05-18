@@ -73,7 +73,7 @@ const firebaseConfig = {
             message = 'Unknown button pressed!';
             break;
     }
-
+    console.log(message)
 
       const username = document.getElementById('username').value; // Get username from input field
       const path = `/${username}/writeCommand`; // Change this path accordingly
@@ -99,6 +99,22 @@ const firebaseConfig = {
     const balanceM2Element = document.getElementById('balance-m2');
     const balanceM3Element = document.getElementById('balance-m3');
     const balanceM4Element = document.getElementById('balance-m4');
+
+    // Set the textContent of each <span> element
+    balanceM1Element.textContent = balanceM1;
+    balanceM2Element.textContent = balanceM2;
+    balanceM3Element.textContent = balanceM3;
+    balanceM4Element.textContent = balanceM4;
+}
+function handleRefreshData(refreshrate_data) {
+    // Assuming balanceData is an array with 4 elements representing balances for each meter
+    const [balanceM1, balanceM2, balanceM3, balanceM4] = refreshrate_data;
+
+    // Select the <span> elements using their IDs
+    const balanceM1Element = document.getElementById('refresh-m1');
+    const balanceM2Element = document.getElementById('refresh-m2');
+    const balanceM3Element = document.getElementById('refresh-m3');
+    const balanceM4Element = document.getElementById('refresh-m4');
 
     // Set the textContent of each <span> element
     balanceM1Element.textContent = balanceM1;
@@ -136,7 +152,13 @@ const firebaseConfig = {
           onValue(balanceRef, (snapshot) => {
               const Balance_data = snapshot.val();
               handleBalanceData(Balance_data);
-              console.log(Balance_data)
+          });
+
+          // Fetch refresh array
+          const refreshrateRef = ref(database, `/${username}/Monitoring_time`);
+          onValue(refreshrateRef, (snapshot) => {
+              const refreshrate_data = snapshot.val();
+              handleRefreshData(refreshrate_data);
           });
       });
   }
@@ -258,9 +280,6 @@ const firebaseConfig = {
       const passwordRef = ref(database, `/${enteredUsername}/sem_password`);
       onValue(passwordRef, (snapshot) => {
           const correctPassword = snapshot.val();
-          console.log('Snapshot:', snapshot.val());
-          console.log('Correct Password from Firebase:', correctPassword);
-          console.log(`${enteredUsername}`)
   
           if (enteredPassword === correctPassword) {
               // Correct password, save username in local storage

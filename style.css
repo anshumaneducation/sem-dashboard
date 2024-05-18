@@ -218,7 +218,7 @@ button:hover {
 .toggle:after {
   content: '';
   position: absolute;
-  width: 30px;
+  width: 45px;
   height: 30px;
   border-radius: 50%;
   background-color: gray;
@@ -235,7 +235,7 @@ p {margin-top: 8px;
      
 /* Checkbox checked effect */
 .checkbox:checked + .toggle::after {
-  left : 50px; 
+  left : 40px; 
 }
      
 /* Checkbox checked toggle label bg color */

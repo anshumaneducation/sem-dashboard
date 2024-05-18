@@ -326,6 +326,19 @@ p {margin-top: 8px;
   margin-top: 20px;
   display: flex;
 }
+.user_messages {
+  margin-left: 20px;
+  background-color: #ed9e9e;
+  border: 1px solid #111417;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.user_messages p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
 
 
 .meter_row {

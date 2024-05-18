@@ -122,6 +122,17 @@ function handleRefreshData(refreshrate_data) {
     balanceM3Element.textContent = balanceM3;
     balanceM4Element.textContent = balanceM4;
 }
+function handlemessageforUser(messageforUser_data) {
+    // Assuming balanceData is an array with 4 elements representing balances for each meter
+    const message_user = messageforUser_data;
+
+    // Select the <span> elements using their IDs
+    const balanceM1Element = document.getElementById('messages-user-id');
+
+    // Set the textContent of each <span> element
+    balanceM1Element.textContent = message_user;
+
+}
 
 
   // Fetch and display data
@@ -153,12 +164,18 @@ function handleRefreshData(refreshrate_data) {
               const Balance_data = snapshot.val();
               handleBalanceData(Balance_data);
           });
-
+    
           // Fetch refresh array
           const refreshrateRef = ref(database, `/${username}/Monitoring_time`);
           onValue(refreshrateRef, (snapshot) => {
               const refreshrate_data = snapshot.val();
               handleRefreshData(refreshrate_data);
+          });
+          // Fetch message of user
+          const messageforUserRef = ref(database, `/${username}/window_message`);
+          onValue(messageforUserRef, (snapshot) => {
+              const messageforUser_data = snapshot.val();
+              handlemessageforUser(messageforUser_data);
           });
       });
   }

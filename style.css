@@ -420,3 +420,43 @@ p {margin-top: 8px;
   font-size: 16px;
 }
 
+/* Scale down the page for smaller screens */
+@media (max-width: 1200px) {
+  body {
+    transform: scale(0.8);
+    transform-origin: top left;
+    width: 125%;
+  }
+}
+
+@media (max-width: 1000px) {
+  body {
+    transform: scale(0.6);
+    transform-origin: top left;
+    width: 166.67%;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    transform: scale(0.5);
+    transform-origin: top left;
+    width: 200%;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    transform: scale(0.4);
+    transform-origin: top left;
+    width: 250%;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    transform: scale(0.3);
+    transform-origin: top left;
+    width: 333.33%;
+  }
+}

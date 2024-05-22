@@ -258,6 +258,7 @@ p {margin-top: 8px;
 
 .universal-reading{
   display: flex;
+  margin-top: 20px;
 }
 .universal-toggle{
   display: flex;
@@ -416,7 +417,6 @@ p {margin-top: 8px;
 }
 
 .user_messages p {
-  margin: 0;
   font-size: 16px;
 }
 

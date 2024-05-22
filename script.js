@@ -156,6 +156,37 @@ function handlemessageforUser3(messageforUser_data) {
 
 }
 
+function handlecolorsShow(colorsfortable_data) {
+   
+  // Assuming colorsfortable_data is an array with the color values
+const [colorRowM1, colorRowM2, colorRowM3, colorRowM4] = colorsfortable_data;
+
+// Select the elements using their IDs
+const colorM1Element = document.getElementById('dc-a:m1');
+const colorM2Element = document.getElementById('dc-a:m2');
+const colorM3Element = document.getElementById('dc-b:m1');
+const colorM4Element = document.getElementById('dc-b:m2');
+
+// Set the background color for each element
+if (colorM1Element) {
+  colorM1Element.style.backgroundColor = colorRowM1;
+}
+
+if (colorM2Element) {
+  colorM2Element.style.backgroundColor = colorRowM2;
+}
+
+if (colorM3Element) {
+  colorM3Element.style.backgroundColor = colorRowM3;
+}
+
+if (colorM4Element) {
+  colorM4Element.style.backgroundColor = colorRowM4;
+}
+
+
+}
+
 
   // Fetch and display data
 
@@ -211,6 +242,13 @@ function handlemessageforUser3(messageforUser_data) {
               const messageforUser_data = snapshot.val();
               handlemessageforUser3(messageforUser_data);
           });
+
+           // Fetch message of user
+           const colorsfortableRef = ref(database, `/${username}/set_colors_table`);
+           onValue(colorsfortableRef, (snapshot) => {
+               const colorsfortable_data = snapshot.val();
+               handlecolorsShow(colorsfortable_data);
+           });
       });
   }
 
@@ -289,6 +327,7 @@ function handlemessageforUser3(messageforUser_data) {
             text="DC-B:M2"
           }
           meterCell.textContent = text;
+          row.id = text.replace(/\s+/g, '-').toLowerCase(); // Set the ID of the row
           row.appendChild(meterCell);
   
           for (const parameter of parameters) {
@@ -296,8 +335,9 @@ function handlemessageforUser3(messageforUser_data) {
               const meterData = dataMap.get(meter.toLowerCase().replace(' ', ''));
               valuesCell.textContent = Array.isArray(meterData[parameter]) ? meterData[parameter].join(', ') : meterData[parameter];
               row.appendChild(valuesCell);
+              
           }
-  
+          
           tbody.appendChild(row);
       }
   }

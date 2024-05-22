@@ -82,7 +82,7 @@ const firebaseConfig = {
   
       setTimeout(() => {
           writeToFirebase(path, null);
-      }, 2000);
+      }, 100);
   }
   
   function writeToFirebase(path, data) {
@@ -122,12 +122,34 @@ function handleRefreshData(refreshrate_data) {
     balanceM3Element.textContent = balanceM3;
     balanceM4Element.textContent = balanceM4;
 }
-function handlemessageforUser(messageforUser_data) {
+function handlemessageforUser1(messageforUser_data) {
     // Assuming balanceData is an array with 4 elements representing balances for each meter
     const message_user = messageforUser_data;
 
     // Select the <span> elements using their IDs
-    const balanceM1Element = document.getElementById('messages-user-id');
+    const balanceM1Element = document.getElementById('messages-user-1');
+
+    // Set the textContent of each <span> element
+    balanceM1Element.textContent = message_user;
+
+}
+function handlemessageforUser2(messageforUser_data) {
+    // Assuming balanceData is an array with 4 elements representing balances for each meter
+    const message_user = messageforUser_data;
+
+    // Select the <span> elements using their IDs
+    const balanceM1Element = document.getElementById('messages-user-2');
+
+    // Set the textContent of each <span> element
+    balanceM1Element.textContent = message_user;
+
+}
+function handlemessageforUser3(messageforUser_data) {
+    // Assuming balanceData is an array with 4 elements representing balances for each meter
+    const message_user = messageforUser_data;
+
+    // Select the <span> elements using their IDs
+    const balanceM1Element = document.getElementById('messages-user-3');
 
     // Set the textContent of each <span> element
     balanceM1Element.textContent = message_user;
@@ -172,10 +194,22 @@ function handlemessageforUser(messageforUser_data) {
               handleRefreshData(refreshrate_data);
           });
           // Fetch message of user
-          const messageforUserRef = ref(database, `/${username}/window_message`);
-          onValue(messageforUserRef, (snapshot) => {
+          const messageforUserRef1 = ref(database, `/${username}/window_message_1`);
+          onValue(messageforUserRef1, (snapshot) => {
               const messageforUser_data = snapshot.val();
-              handlemessageforUser(messageforUser_data);
+              handlemessageforUser1(messageforUser_data);
+          });
+           // Fetch message of user
+           const messageforUserRef2 = ref(database, `/${username}/window_message_2`);
+           onValue(messageforUserRef2, (snapshot) => {
+               const messageforUser_data = snapshot.val();
+               handlemessageforUser2(messageforUser_data);
+           });
+            // Fetch message of user
+          const messageforUserRef3 = ref(database, `/${username}/window_message_3`);
+          onValue(messageforUserRef3, (snapshot) => {
+              const messageforUser_data = snapshot.val();
+              handlemessageforUser3(messageforUser_data);
           });
       });
   }
@@ -274,6 +308,7 @@ function handlemessageforUser(messageforUser_data) {
   const loginContainer = document.getElementById('login-container');
   const headerTextForIt = document.getElementById('header');
   const appContainer = document.getElementById('app-container');
+  const appContainer1 = document.getElementById('app-container1');
   
   // Check if the user is already authenticated on window load
   window.onload = function () {
@@ -291,7 +326,9 @@ function handlemessageforUser(messageforUser_data) {
       const usernameInput = document.getElementById('username');
       const passwordInput = document.getElementById('password');
       const enteredPassword = passwordInput.value;
-      const enteredUsername = usernameInput.value;
+      const user_id_get = usernameInput.value.split('@')[0];
+      const enteredUsername = user_id_get;
+      
   
       // Fetch the correct password from Firebase
       const passwordRef = ref(database, `/${enteredUsername}/sem_password`);
@@ -306,6 +343,7 @@ function handlemessageforUser(messageforUser_data) {
               // Hide login container and show app container
               loginContainer.style.display = 'none';
               appContainer.style.display = 'block';
+              appContainer1.style.display = 'block';
               headerTextForIt.style.display='block'
               fetchData(enteredUsername); // Fetch data when authenticated
           } else {

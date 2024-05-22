@@ -28,7 +28,7 @@
             <span id="profileSymbol">👤</span><span id="userIdInHTML">userId</span>
 
             <button id="logout_button" onclick="import('./script.js').then(script => script.logout())">Logout</button>
-           <div class="user_messages"><p id="messages-user-id"> messages for user</p></div>
+           
         </div>
         <table id="data-table">
             <thead>
@@ -37,114 +37,101 @@
             </thead>
             <tbody></tbody>
         </table>
-        <div>
-            <div class="universal-reading">
-                <div class="container-margin-all">
-                    <strong>Meter Reading</strong>
-                </div>
-            <div class="read-button">
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m1'))">DC-A:M1</button>
-                <div class="vertical-line-here-1"></div>
 
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m2'))">DC-A:M2</button>
-                <div class="vertical-line-here-2"></div>
-
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m3'))">DC-B:M1</button>
-                <div class="vertical-line-here-3"></div>
-
-                <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m4'))">DC-B:M2</button>
-            </div>
-        </div>
-            <div class="universal-toggle">
-                <div class="container-margin-all">
-                    <strong>Disconnection</strong>
-                </div>
-
-            <div class="toggle-button">
-                <div id="toggle1btn">
-                <input type="checkbox" id="switch1" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w1'))" />
-                <label for="switch1" class="toggle" >
-                    <p>&nbsp;ON&nbsp; &nbsp;&nbsp;OFF</p>
-                </label></div>
- 
-
-                <div id="toggle2btn">
-                <input type="checkbox" id="switch2" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w2'))"/>
-                <label for="switch2" class="toggle" >
-                    <p>&nbsp;ON &nbsp;&nbsp;&nbsp;OFF</p>
-                </label>
-            </div>
-
-
-                <div id="toggle3btn">
-                <input type="checkbox" id="switch3" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w3'))"/>
-                <label for="switch3" class="toggle" >
-                    <p>&nbsp;ON &nbsp;&nbsp;&nbsp;OFF</p>
-                </label>
-            </div>
-
-            
-                <div id="toggle4btn">
-                <input type="checkbox" id="switch4" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w4'))"/>
-                <label for="switch4" class="toggle" >
-                    <p>&nbsp;ON &nbsp;&nbsp;&nbsp;OFF</p>
-                </label>
-            </div>
-            </div>
-        </div>
-        <div class="Monitoring_starting">
+        <div class="universal-reading align-left">
             <div class="container-margin-all">
-                <strong>Refresh Rate</strong>
+              <strong>Meter Reading</strong>
+            </div>
+            <div class="read-button">
+              <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m1'))">DC-A:M1</button>
+              <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m2'))">DC-A:M2</button>
+              <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m3'))">DC-B:M1</button>
+              <button class="read-meter" onclick="import('./script.js').then(script => script.handleButtonClick('m4'))">DC-B:M2</button>
+            </div>
+          </div>
+          
+          <div class="universal-toggle align-left">
+            <div class="container-margin-all">
+              <strong>Disconnection</strong>
+            </div>
+            <div class="toggle-button">
+              <div id="toggle1btn">
+                <input type="checkbox" id="switch1" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w1'))" />
+                <label for="switch1" class="toggle">
+                  <p>&nbsp;ON&nbsp; &nbsp;&nbsp;OFF</p>
+                </label>
+              </div>
+              <div id="toggle2btn">
+                <input type="checkbox" id="switch2" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w2'))" />
+                <label for="switch2" class="toggle">
+                  <p>&nbsp;ON &nbsp;&nbsp;&nbsp;OFF</p>
+                </label>
+              </div>
+              <div id="toggle3btn">
+                <input type="checkbox" id="switch3" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w3'))" />
+                <label for="switch3" class="toggle">
+                  <p>&nbsp;ON &nbsp;&nbsp;&nbsp;OFF</p>
+                </label>
+              </div>
+              <div id="toggle4btn">
+                <input type="checkbox" id="switch4" class="checkbox" onclick="import('./script.js').then(script => script.handleButtonClick('w4'))" />
+                <label for="switch4" class="toggle">
+                  <p>&nbsp;ON &nbsp;&nbsp;&nbsp;OFF</p>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="Monitoring_starting align-left">
+            <div class="container-margin-all">
+              <strong>Refresh Rate</strong>
             </div>
             <div class="meter_row">
-                <div class="meter">
-                    <span id="refresh-m1">0</span>  
-                </div>
-      
-
-                <div class="meter">
-                    <span id="refresh-m2">0</span>
-                </div>
-     
-                <div class="meter">
-                    <span id="refresh-m3">0</span>  
-                </div>
-          
-                
-                <div class="meter">
-                    <span id="refresh-m4">0</span>
-                </div>
+              <div class="meter">
+                <span id="refresh-m1" class="refresh-row">DISABLED</span>
+              </div>
+              <div class="meter">
+                <span id="refresh-m2" class="refresh-row">DISABLED</span>
+              </div>
+              <div class="meter">
+                <span id="refresh-m3" class="refresh-row">DISABLED</span>
+              </div>
+              <div class="meter">
+                <span id="refresh-m4" class="refresh-row">DISABLED</span>
+              </div>
             </div>
-        </div>
-
-            <div class="meter_data_container">
-                <div class="container-margin-all">
-                    <strong>Balance(Wh)</strong>
-                </div>
-                <div class="meter_row">
-                    <div class="meter">
-                        <span id="balance-m1">0</span>  
-                    </div>
+          </div>
           
-
-                    <div class="meter">
-                        <span id="balance-m2">0</span>
-                    </div>
-         
-                    <div class="meter">
-                        <span id="balance-m3">0</span>  
-                    </div>
-              
-                    
-                    <div class="meter">
-                        <span id="balance-m4">0</span>
-                    </div>
-                </div>
+          <div class="meter_data_container align-left">
+            <div class="container-margin-all">
+              <strong>Balance(Wh)</strong>
             </div>
+            <div class="meter_row">
+              <div class="meter">
+                <span id="balance-m1">0</span>
+              </div>
+              <div class="meter">
+                <span id="balance-m2">0</span>
+              </div>
+              <div class="meter">
+                <span id="balance-m3">0</span>
+              </div>
+              <div class="meter">
+                <span id="balance-m4">0</span>
+              </div>
+            </div>
+          </div>
 
+          
 
     </section>
-
+    <div class="user_messages" class="align-right" id="app-container1" style="display: none;">
+        <p id="messages-user-1"> messages for user</p>
+        <p id="messages-user-2"> messages for user</p>
+        <p id="messages-user-3"> messages for user</p>
+    </div>
+       
+</body>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js"></script>

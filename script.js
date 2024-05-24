@@ -82,7 +82,7 @@ const firebaseConfig = {
   
       setTimeout(() => {
           writeToFirebase(path, null);
-      }, 100);
+      }, 1000);
   }
   
   function writeToFirebase(path, data) {
@@ -280,8 +280,8 @@ if (colorM4Element) {
   
       const paras = ["Volts 01", "Volts 02", "Volts 03", "Current 01", "Current 02", "Current 03", "Watt 01", "Watt 02",
           "Watt 03", "VAR 01", "VAR 02", "VAR 03", "Freq", "Wh Import", "Wh Export", "VL 1-2", "VL 2-3", "VL 3-1"];
-      const SIunits=["Volts","Volts","Volts","Amps","Amps","Amps","Watts","Watts","Watts","KVAr","KVAr",
-      "KVAr","Hz","Watt-hr","Watt-hr","Volts","Volts","Volts"]
+      const SIunits=["Volts","Volts","Volts","Amps","Amps","Amps","Watts","Watts","Watts","VAr","VAr",
+      "VAr","Hz","Watt-hr","Watt-hr","Volts","Volts","Volts"]
   
       // Add "Device" header as the first column
       const deviceHeader = document.createElement('th');

@@ -279,9 +279,9 @@ if (colorM4Element) {
           .filter((value, index, self) => self.indexOf(value) === index);
   
       const paras = ["Volts 01", "Volts 02", "Volts 03", "Current 01", "Current 02", "Current 03", "Watt 01", "Watt 02",
-          "Watt 03", "VAR 01", "VAR 02", "VAR 03", "Freq", "Wh Import", "Wh Export", "VL 1-2", "VL 2-3", "VL 3-1"];
+      "Watt 03", "VAR 01", "VAR 02", "VAR 03", "PF-1", "PF-2", "PF-3", "Freq", "Wh Import", "Wh Export"];
       const SIunits=["Volts","Volts","Volts","Amps","Amps","Amps","Watts","Watts","Watts","VAr","VAr",
-      "VAr","Hz","Watt-hr","Watt-hr","Volts","Volts","Volts"]
+      "VAr"," "," "," ","Hz","Watt-hr","Watt-hr"]
   
       // Add "Device" header as the first column
       const deviceHeader = document.createElement('th');
